@@ -9,10 +9,15 @@ import {
 } from 'react-native';
 import renderChart from './renderChart';
 import echarts from './echarts.min';
-
-const source = Platform.OS === 'ios' ? require('./tpl.html') : {
-  uri: 'file:///android_asset/tpl.html'
+const source = "";
+if (!__DEV__) {
+  source = Platform.OS === 'ios' ? require('./tpl.html') : {
+    uri: 'file:///android_asset/tpl.html'
+  }
+} else {
+  source = require('./tpl.html')
 }
+
 export default class App extends Component {
 
   constructor(props) {
